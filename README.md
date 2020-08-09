@@ -39,6 +39,6 @@ $ php artisan serve
 Video Tutorial [Klik Disini](https://www.youtube.com/playlist?list=PL6mr4X-vI_mIw7oGnZy_Geiu7K-MxEjPl).
 
 ## Sosial Media
-Facebook [Klik Disini](https://web.facebook.com/restu.fier).
-Instagram Tutorial [Klik Disini](https://www.instagram.com/restu_nick/).
-Yputube Channel [Klik Disini](https://www.youtube.com/channel/UCsgYQgzPN_0siiTxpTXwoBg).
+* Facebook [Klik Disini](https://web.facebook.com/restu.fier).
+* Instagram Tutorial [Klik Disini](https://www.instagram.com/restu_nick/).
+* Youtube Channel [Klik Disini](https://www.youtube.com/channel/UCsgYQgzPN_0siiTxpTXwoBg).
