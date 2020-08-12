@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Model\Category;
 
 class CategoryController extends Controller
 {
@@ -17,9 +18,10 @@ class CategoryController extends Controller
         return view ('admin.category.add');
     }
 
-    // public function post(Request $request)
-    // {
-    //     $data = $request->all();
-    //     dd($data);
-    // }
+    public function edit($id)
+    {
+        $category = Category::where('id', $id)->first();
+
+        return view ('admin.category.edit', compact('category'));
+    }
 }

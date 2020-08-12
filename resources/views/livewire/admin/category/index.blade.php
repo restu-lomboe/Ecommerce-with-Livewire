@@ -1,4 +1,9 @@
 <div>
+    @if (session()->has('message'))
+        <div class="alert alert-success mt-3 ml-4 mr-4">
+            {{ session('message') }}
+        </div>
+    @endif
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -37,8 +42,8 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="" class="btn btn-danger btn-sm">Hapus</a>
+                                                <a href=" {{ route('edit.category',$cat->id) }} " class="btn btn-primary btn-sm">Edit</a>
+                                                <a class="btn btn-danger btn-sm text-white" wire:click="$emit('triggerDelete',{{ $cat->id }})">Hapus</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -56,3 +61,34 @@
     </section>
     <!-- /.content -->
 </div>
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.19.0/dist/sweetalert2.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        @this.on('triggerDelete', idCategory => {
+            Swal.fire({
+                title: 'Are You Sure?',
+                text: 'File ini Akan Dihapus Permanent',
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: 'var(--danger)',
+                cancelButtonColor: 'var(--primary)',
+                confirmButtonText: 'Delete!'
+            }).then((result) => {
+                //if user clicks on delete
+                if (result.value) {
+                // calling destroy method to delete
+                @this.call('destroy',idCategory)
+                // success response
+                responseAlert({title: session('message'), type: 'success'});
+                } else {
+                    responseAlert({
+                        title: 'Operation Cancelled!',
+                        type: 'success'
+                    });
+                }
+            });
+        });
+    })
+</script>
+@endpush

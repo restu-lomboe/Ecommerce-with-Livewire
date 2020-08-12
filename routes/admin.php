@@ -16,4 +16,6 @@ Route::get('/dashboard', 'Admin\PageController@index')->name('dashboard');
 //category
 Route::get('/category', 'Admin\CategoryController@index')->name('category');
 Route::get('/category/add', 'Admin\CategoryController@add')->name('add.category');
+
+Route::get('/category/{id}', 'Admin\CategoryController@edit')->name('edit.category');
 //post category

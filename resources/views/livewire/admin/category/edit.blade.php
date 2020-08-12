@@ -5,8 +5,9 @@
             {{ session('message') }}
         </div>
     @endif
-    <form role="form" method="POST" wire:submit.prevent="submit">
+    <form role="form" method="POST" wire:submit.prevent="update">
         <div class="card-body">
+            <input type="hidden" wire:model="idCategory">
             <h4>Nama Category</h4>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -17,11 +18,12 @@
 
             <h4>Images Banner</h4>
             <div class="input-group mb-3">
-                <input id="input-fa" type="file" wire:model="banner" class="form-control file" data-browse-on-zone-click="true">
+                <input id="input-fa" type="file" wire:model="banner_update" class="form-control file" data-browse-on-zone-click="true">
+                <input type="hidden" wire:model="banner">
             </div>
 
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" wire:model="active" id="exampleCheck1" value="1">
+                <input type="checkbox" class="form-check-input" wire:model="active" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">active</label>
             </div>
         </div>

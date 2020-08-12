@@ -37,6 +37,8 @@ class Create extends Component
         $this->deleteInput();
 
         $this->emit('storeCategory', $category);
+
+        session()->flash('message', 'Category Berhasil ditambahkan');
     }
 
     public function storeImage()
