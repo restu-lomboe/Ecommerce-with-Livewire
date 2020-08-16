@@ -1,9 +1,4 @@
 <div>
-    @if (session()->has('message'))
-        <div class="alert alert-success mt-3 ml-4 mr-4">
-            {{ session('message') }}
-        </div>
-    @endif
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -16,6 +11,16 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <div class="form-group mb-5">
+                                <select wire:model="paginate" class="form-control col-md-1 float-left">
+                                    <option value="3">3</option>
+                                    <option value="5">5</option>
+                                    <option value="7">7</option>
+                                </select>
+                                <form class="form-inline float-right">
+                                    <input class="form-control mr-sm-2" wire:model="search" type="search" placeholder="Search" aria-label="Search">
+                                </form>
+                            </div>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -49,6 +54,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="float-right mt-3">
+                                {{ $category->links() }}
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -71,21 +79,26 @@
                 text: 'File ini Akan Dihapus Permanent',
                 type: "warning",
                 showCancelButton: true,
-                confirmButtonColor: 'var(--danger)',
-                cancelButtonColor: 'var(--primary)',
-                confirmButtonText: 'Delete!'
+                cancelButtonColor: 'var(--danger)',
+                confirmButtonColor: 'var(--success)',
+                confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 //if user clicks on delete
                 if (result.value) {
-                // calling destroy method to delete
-                @this.call('destroy',idCategory)
-                // success response
-                responseAlert({title: session('message'), type: 'success'});
-                } else {
-                    responseAlert({
-                        title: 'Operation Cancelled!',
-                        type: 'success'
-                    });
+                    // calling destroy method to delete
+                    @this.call('destroy',idCategory)
+
+                    Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                    )
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire(
+                    'Cancelled',
+                    'File Tidak Jadi Dihapus :)',
+                    'error'
+                    )
                 }
             });
         });

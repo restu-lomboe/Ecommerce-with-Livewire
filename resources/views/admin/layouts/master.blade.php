@@ -7,14 +7,10 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="turbolinks-cache-control" content="no-cache">
-    <!-- Styles -->
-    @livewireStyles
-    {{-- asset css --}}
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     @include('admin.layouts._asset_header')
-
+    @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">

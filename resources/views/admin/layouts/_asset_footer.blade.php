@@ -1,6 +1,7 @@
 <!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-{{-- <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script> --}}
+<script src="{{ asset('backend/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{ asset('backend/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> --}}
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
