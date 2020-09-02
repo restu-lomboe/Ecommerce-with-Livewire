@@ -78,14 +78,14 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
+                <li class="nav-item has-treeview">
                     <a href=" {{ route('dashboard') }} " class="nav-link {{ Route::currentRouteName() === 'dashboard' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item has-treeview {{ Route::currentRouteName() === 'category' ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ Route::currentRouteName() === 'category' ? 'active' : '' }}">
+                <li class="nav-item has-treeview {{ Route::currentRouteName() === 'category' || 'brand' || 'product' ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Route::currentRouteName() === 'category' || 'brand' || 'product' ? 'active' : '' }}">
                         <i class="fas fa-database pl-1 pr-1"></i>
                         <p style="text-indent: 8px;">Data Master</p>
                         <i class="fas fa-angle-left right"></i>
@@ -98,9 +98,15 @@
                             </a>
                         </li>
                         <li class="nav-item a-text">
-                            <a href="" class="nav-link">
+                            <a href=" {{ route('brand') }}" class="nav-link {{ Route::currentRouteName() === 'brand' ? 'active' : '' }}">
                             <i class="far fa-hand-point-right"></i>
                             <p>Brands</p>
+                            </a>
+                        </li>
+                        <li class="nav-item a-text">
+                            <a href=" {{ route('product') }}" class="nav-link {{ Route::currentRouteName() === 'product' ? 'active' : '' }}">
+                            <i class="far fa-hand-point-right"></i>
+                            <p>Products</p>
                             </a>
                         </li>
                     </ul>

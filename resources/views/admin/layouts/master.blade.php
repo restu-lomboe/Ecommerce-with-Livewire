@@ -12,7 +12,7 @@
     @include('admin.layouts._asset_header')
     @livewireStyles
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed" data-turbolinks="false">
     <div class="wrapper">
 
         @include('admin.layouts.header')

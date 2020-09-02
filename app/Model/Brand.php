@@ -4,11 +4,12 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Brand extends Model
 {
     protected $fillable = [
         'nama',
         'banner',
+        'logo',
         'slug',
         'status'
     ];

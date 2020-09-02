@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Category;
+namespace App\Http\Livewire\Admin\Brand;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
-use App\Model\Category;
-use Intervention\Image\ImageManagerStatic;
+use App\Model\Brand;
 use Livewire\WithFileUploads;
-
 
 class Create extends Component
 {
@@ -16,29 +14,33 @@ class Create extends Component
 
     public $nama;
     public $banner;
+    public $logo;
     public $active;
 
     public function submit()
     {
         $this->validate([
-            'nama' => 'required|min:6',
-            'banner' => 'required'
+            'nama' => 'required',
+            'banner' => 'required',
+            'logo' => 'required'
         ]);
 
         $image = $this->storeImage();
+        $logo = $this->storeImageLogo();
 
-        $category = Category::create([
+        $brand = Brand::create([
             'nama' => $this->nama,
             'banner' => $image,
+            'logo' => $logo,
             'slug' => Str::slug($this->nama),
             'status' =>  $this->active == null ? 0 : 1
         ]);
 
         $this->deleteInput();
 
-        $this->emit('storeCategory', $category);
+        // $this->emit('storeCategory', $category);
 
-        session()->flash('message', 'Category Berhasil ditambahkan');
+        session()->flash('message', 'Brands Berhasil ditambahkan');
     }
 
     public function storeImage()
@@ -48,8 +50,21 @@ class Create extends Component
         }
         $extension = $this->banner->getClientOriginalExtension();
         $name = Str::random() .'.'.$extension;
-        $images = 'images/category/'.$name;
+        $images = 'images/brand/banner/'.$name;
         \Image::make($this->banner)->save($images);
+
+        return $name;
+    }
+
+    public function storeImageLogo()
+    {
+        if (!$this->banner){
+            return null;
+        }
+        $extension = $this->logo->getClientOriginalExtension();
+        $name = Str::random() .'.'.$extension;
+        $images = 'images/brand/logo/'.$name;
+        \Image::make($this->logo)->save($images);
 
         return $name;
     }
@@ -58,10 +73,11 @@ class Create extends Component
     {
         $this->nama = null;
         $this->banner = '';
+        $this->logo = '';
     }
 
     public function render()
     {
-        return view('livewire.admin.category.create');
+        return view('livewire.admin.brand.create');
     }
 }

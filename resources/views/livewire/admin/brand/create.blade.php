@@ -7,17 +7,25 @@
     @endif
     <form role="form" method="POST" wire:submit.prevent="submit">
         <div class="card-body">
-            <h4>Nama Category</h4>
+            <h4>Nama Brand</h4>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                 <span class="input-group-text">@</span>
                 </div>
-                <input type="text" wire:model="nama" class="form-control" placeholder="Nama Category">
+                <input type="text" wire:model="nama" class="form-control  @error('nama') is-invalid @enderror" placeholder="Nama Brand">
             </div>
+            @error('nama')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
 
             <h4>Images Banner</h4>
             <div class="input-group mb-3" wire:ignore>
                 <input id="input-fa" type="file" wire:model="banner" class="form-control file" data-browse-on-zone-click="true">
+            </div>
+
+            <h4>Logo</h4>
+            <div class="input-group mb-3" wire:ignore>
+                <input id="input-fa-logo" type="file" wire:model="logo" class="form-control file" data-browse-on-zone-click="true">
             </div>
 
             <div class="form-check">
