@@ -15,7 +15,14 @@ return [
     |--------------------------------------------------------------------------
      */
 
-    'use_package_routes'       => true,
+    'use_package_routes'        => true,
+
+
+    'middlewares'               => ['web'],
+
+
+    'url_prefix'                => 'laravel-filemanager',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -38,6 +45,8 @@ return [
     'allow_shared_folder'      => true,
 
     'shared_folder_name'       => 'shares',
+
+    'base_directory'           => 'public',
 
     /*
     |--------------------------------------------------------------------------

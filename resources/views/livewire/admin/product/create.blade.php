@@ -141,12 +141,20 @@
 @push('scripts')
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <script>
-  var options = {
-    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
-  };
+CKEDITOR.replace('short_desc', {
+    filebrowserImageBrowseUrl: '/filemanager?type=Images',
+    filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
+    filebrowserBrowseUrl: '/filemanager?type=Files',
+    filebrowserUploadUrl: '/filemanager/upload?type=Files&_token='
+});
+</script>
+<script>
+CKEDITOR.replace('description', {
+    filebrowserImageBrowseUrl: '/filemanager?type=Images',
+    filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
+    filebrowserBrowseUrl: '/filemanager?type=Files',
+    filebrowserUploadUrl: '/filemanager/upload?type=Files&_token='
+});
 </script>
 <script>
     CKEDITOR.replace('short_desc').on('change', function(e){
